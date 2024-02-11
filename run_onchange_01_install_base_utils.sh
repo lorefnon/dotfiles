@@ -23,6 +23,7 @@ sudo apt install \
     libfontconfig1-dev \
     libxcb-xfixes0-dev \
     libxkbcommon-dev \
+    libfontconfig1-dev \
     python3;
 
 sudo chsh -s /bin/zsh lorefnon
