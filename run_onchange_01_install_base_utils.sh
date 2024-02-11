@@ -17,6 +17,9 @@ sudo apt install \
     tmux \
     ranger \
     tree \
+    pgcli \
+    pspg \
+    fzf \
     python3;
 
 sudo chsh -s /bin/zsh lorefnon
