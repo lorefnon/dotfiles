@@ -50,4 +50,3 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
     postgresql-16 postgresql-contrib-16 \
     hub;
 
-
