@@ -17,13 +17,6 @@ sudo apt install \
     tmux \
     ranger \
     tree \
-    # needed for alacritty
-    pkg-config \
-    libfreetype6-dev \
-    libfontconfig1-dev \
-    libxcb-xfixes0-dev \
-    libxkbcommon-dev \
-    libfontconfig1-dev \
     python3;
 
 sudo chsh -s /bin/zsh lorefnon
