@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 mkdir -p ~/Utils
 cd ~/Utils

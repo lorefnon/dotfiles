@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 if [ ! -d "~/.config/lvim" ]; then
     echo "Setting up lvim config"

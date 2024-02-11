@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 if [ ! -d "~/.tmux/plugins/tpm" ]; then
     echo "Installing tpm"
