@@ -14,14 +14,13 @@ sudo apt install \
     gnupg2 \
     wget \
     zsh \
-
+    tmux \
     # needed for alacritty
     pkg-config \
     libfreetype6-dev \
     libfontconfig1-dev \
     libxcb-xfixes0-dev \
     libxkbcommon-dev \
-
     python3;
 
 sudo chsh -s /bin/zsh lorefnon
