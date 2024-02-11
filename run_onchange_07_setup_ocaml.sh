@@ -1,10 +1,17 @@
 #!/bin/sh
 
-mkdir -p ~/Utils
-cd ~/Utils
+which opam
 
-bash -c "sh <(curl -fsSL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh)"
+if [ "$?" -eq 1 ]; then
 
-opam init
+    mkdir -p ~/Utils
+    cd ~/Utils
 
-opam install ocaml-lsp-server odoc ocamlformat utop
+    echo "Installing opam"
+    bash -c "sh <(curl -fsSL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh)"
+
+    opam init
+
+    opam install ocaml-lsp-server odoc ocamlformat utop
+
+fi
