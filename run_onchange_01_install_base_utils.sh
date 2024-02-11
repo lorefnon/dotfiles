@@ -15,6 +15,8 @@ sudo apt install \
     wget \
     zsh \
     tmux \
+    ranger \
+    tree \
     # needed for alacritty
     pkg-config \
     libfreetype6-dev \
