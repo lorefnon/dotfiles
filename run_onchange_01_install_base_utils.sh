@@ -5,6 +5,7 @@ sudo apt update
 sudo apt install \
     ca-certificates \
     build-essential \
+    apt-transport-https \
     curl \
     htop \
     jq \
@@ -20,7 +21,9 @@ sudo apt install \
     pgcli \
     pspg \
     fzf \
-    python3;
+    git \
+    python3 \
+    pipx;
 
 sudo chsh -s /bin/zsh lorefnon
 
@@ -41,11 +44,23 @@ echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://pack
 
 # Prep sources: PG
 sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
+
+# Prep sources: Dart
+wget -qO- https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /usr/share/keyrings/dart.gpg
+echo 'deb [signed-by=/usr/share/keyrings/dart.gpg arch=amd64] https://storage.googleapis.com/download.dartlang.org/linux/debian stable main' | sudo tee /etc/apt/sources.list.d/dart_stable.list
+
+# Prep sources: gh cli
+curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
 
 sudo apt-get update
 
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin \
     redis \
     postgresql-16 postgresql-contrib-16 \
-    hub;
+    dart \
+    gh \
+    -y;
 
