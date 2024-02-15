@@ -25,6 +25,7 @@ sudo apt install \
     python3 \
     pipx \
     pkg-config \
+    sshfs \
     libfreetype6-dev \
     libfontconfig1-dev \
     libxcb-xfixes0-dev \
