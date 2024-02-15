@@ -23,7 +23,13 @@ sudo apt install \
     fzf \
     git \
     python3 \
-    pipx;
+    pipx \
+    pkg-config \
+    libfreetype6-dev \
+    libfontconfig1-dev \
+    libxcb-xfixes0-dev \
+    libxkbcommon-dev \
+    libfontconfig1-dev;
 
 sudo chsh -s /bin/zsh lorefnon
 
