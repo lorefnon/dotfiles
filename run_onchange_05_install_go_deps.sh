@@ -11,5 +11,5 @@ sudo tar -C /usr/local -xzf go1.26.2.linux-amd64.tar.gz
 
 # Install yq
 echo "Installing yq"
-go install github.com/mikefarah/yq/v4.53.2@latest
+go install github.com/mikefarah/yq/v4@latest
 
