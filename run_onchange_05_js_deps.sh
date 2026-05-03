@@ -2,15 +2,15 @@
 
 # Ensure nvm installed
 echo "Installing nvm"
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
 
 echo "Installing node"
 source ~/.zshrc
-nvm install 21.6.1
+nvm install 25.9.0
 
 # Ensure pnpm installed
 echo "Installing pnpm"
-curl -fsSL https://get.pnpm.io/install.sh | sh -
+npm install -g pnpm@9.15.9
 
 # Install bun
 echo "Installing bun"

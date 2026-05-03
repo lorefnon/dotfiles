@@ -4,7 +4,7 @@ mkdir -p ~/Utils
 cd ~/Utils
 
 echo "Install nvim"
-curl -LO https://github.com/neovim/neovim/releases/download/v0.9.5/nvim-linux64.tar.gz
+curl -LO https://github.com/neovim/neovim/releases/download/v0.12.2/nvim-linux64.tar.gz
 rm -rf nvim
 mkdir -p nvim
 sudo tar -C nvim -xzf nvim-linux64.tar.gz

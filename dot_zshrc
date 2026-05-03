@@ -1,16 +1,14 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
+# Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-export ANDROID_HOME="$HOME/Android/Sdk"
-export PATH="$PATH:$HOME/.local/bin:$HOME/.opam/default/bin:$HOME/.local/share/pnpm:$HOME/.deno/bin:$HOME/.deno/bin:$HOME/.cargo/bin:$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:$HOME/bin:/usr/local/go/bin:$HOME/.jdks/corretto-16.0.2/bin:$HOME/go/bin:$HOME/usr/local/go/bin:$HOME/.dotnet/tools:$HOME/bin:/usr/local/go/bin:$HOME/.cargo/bin:$HOME/.nimble/bin:$HOME/.jdks/corretto-16.0.2/bin:$HOME/go/bin:$HOME/.dotnet:$HOME/Utils/idea-IC-221.5080.210/bin:$HOME/.dotnet/tools:$HOME/Utils/nim/nim-1.6.6/bin:$HOME/Android/Sdk/platform-tools"
+
 # Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
+# load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
-export JAVA_HOME="$HOME/Utils/jdk-18"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -73,86 +71,45 @@ export JAVA_HOME="$HOME/Utils/jdk-18"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    git 
+    git
     fzf
-    zsh-autosuggestions
 )
 
-fpath+=~/.zfunc
 source $ZSH/oh-my-zsh.sh
+
+export PATH=~/bin:/usr/local/go/bin/:~/Utils/android-sdk-tools:~/.pub-cache/bin:~/.dotnet:$PATH
 
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-export LANG=en_US.UTF-8
+# export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-export EDITOR=lvim
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
-#   export EDITOR='mvim'
+#   export EDITOR='nvim'
 # fi
 
 # Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+# export ARCHFLAGS="-arch $(uname -m)"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# Set personal aliases, overriding those provided by Oh My Zsh libs,
+# plugins, and themes. Aliases can be placed here, though Oh My Zsh
+# users are encouraged to define aliases within a top-level file in
+# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
+# - $ZSH_CUSTOM/aliases.zsh
+# - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-eval "$(starship init zsh)"
-
-alias :q=exit
-alias :qa=exit
-alias :e="lvim "
-alias lg="lazygit "
-alias gs="git status"
-alias gc="git commit"
-
-gnvim () {
-  gnome-terminal --title "$(basename $(pwd))" -- nvim $(pwd)
-}
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-eval "$(zoxide init zsh --cmd j)"
-
-export DEPLOY_ENV=development
-export DENO_INSTALL="$HOME/.deno"
-export PNPM_HOME="/home/lorefnon/.local/share/pnpm"
-export PATH="$PNPM_HOME:$DENO_INSTALL/bin:$PATH"
-export LANG="en_US.UTF-8"
-
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-# Ref: https://gitlab.com/EvanHahn/dotfiles/-/blob/ece393e625bb8254fe05774df33bb5af8a73d7e7/home/zsh/.config/zsh/aliases.zsh#L48-56
-# Ref: https://evanhahn.com/a-decade-of-dotfiles/
-boop () {
-  local last="$?"
-  if [[ "$last" == '0' ]]; then
-    sfx good
-  else
-    sfx bad
-  fi
-  $(exit "$last")
-}
-
-
-# . $(pack completion --shell zsh)
-
-# export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export CGO_ENABLED=1
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # pnpm
 export PNPM_HOME="/home/lorefnon/.local/share/pnpm"
@@ -162,30 +119,43 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+. /usr/share/autojump/autojump.sh
+
+export LANG=en_US.UTF-8
+export EDITOR=nvim
+export PSQL_PAGER='pspg -X -b'
+export EDGE_PATH=~/Workspace/chromium-latest-linux/latest/chrome
+
+alias lvim=nvim
+alias :q=exit
+alias :qa=exit
+alias :e="nvim "
+alias lg="lazygit "
+alias gs="git status"
+alias gc="git commit"
+
+. "$HOME/.local/bin/env"
+
 # bun completions
 [ -s "/home/lorefnon/.bun/_bun" ] && source "/home/lorefnon/.bun/_bun"
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$HOME/.nimble/bin:$PATH"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/lorefnon/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/lorefnon/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/lorefnon/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/lorefnon/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/lorefnon/.lmstudio/bin"
+# End of LM Studio CLI section
 
 
-alias gam="/home/lorefnon/bin/gam/gam"
+## [Completion]
+## Completion scripts setup. Remove the following line to uninstall
+# [[ -f /home/lorefnon/.dart-cli-completion/zsh-config.zsh ]] && . /home/lorefnon/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
 
-export PSQL_PAGER='pspg -X -b'
+export KERL_BUILD_BACKEND="git"
+export KERL_CONFIGURE_OPTIONS="--without-javac \
+                               --with-dynamic-trace=systemtap"
 
+# GitArbor TUI
+export PATH="$PATH:/home/lorefnon/.gitarbor/bin"

@@ -61,7 +61,8 @@
 	c-an = "!git add . ; git commit -m 'ANNOTATE!!!'"
 	cdr = "!cd `git rev-parse --show-toplevel`"
     erf = "!lvim $(git log --pretty=format: --name-only --since='7 days ago' | fzf )"
-    cdt = "!git commit --date \"$GIT_COMMITTER_DATE\""
+	cdt = "!git commit --date \"$GIT_COMMITTER_DATE\""
+	diffsel = "!f() { git diff --name-only \"$@\" | fzf --prompt=\"Select file (Enter=diff, ESC=quit): \" --bind \"enter:execute(tmux send-keys -t 1 \\\"git diff $* {}\\\" Enter)\" --bind \"enter:+clear-query+first\" --cycle --height=40% --reverse; }; f"
 
 [init]
 	defaultBranch = main
@@ -70,3 +71,12 @@
 	name = lorefnon
 [push]
 	autoSetupRemote = true
+[core]
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	dark = true
+[merge]
+	conflictStyle = zdiff3
